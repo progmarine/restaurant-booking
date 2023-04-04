@@ -1,0 +1,31 @@
+spring:
+  data:
+    r2dbc:
+      repositories:
+        enabled: false
+    mongodb:
+      url: mongodb://localhost:27017/restaurants
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Qwerty123!
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: locale
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    events:
+      enable-listener: true
+
+server: 8080
+
+app:
+  r2dbc:
+    users-enabled: false
+    restaurants-enabled: false
+    reviews-enabled: false
+    time-slots-enabled: true
+    booking-enabled: true
